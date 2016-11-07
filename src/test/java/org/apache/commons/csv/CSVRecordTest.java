@@ -51,7 +51,7 @@ public class CSVRecordTest {
         header.put("second", Integer.valueOf(1));
         header.put("third", Integer.valueOf(2));
         recordWithHeader = new CSVRecord(values, header, null, 0, -1);
-		System.out.println("1");
+		//System.out.println("1");
     }
 
     @Test
