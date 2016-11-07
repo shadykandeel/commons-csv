@@ -1,4 +1,3 @@
 test:
  post:
    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-   -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
