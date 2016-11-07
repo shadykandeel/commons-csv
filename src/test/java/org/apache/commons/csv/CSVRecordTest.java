@@ -172,7 +172,7 @@ public class CSVRecordTest {
 	System.out.println("15");
         // do:
 		System.out.println("15-1");
-        final CSVPrinter printer = new CSVPrinter(new StringBuilder(), CSVFormat.DEFAULT);
+         CSVPrinter printer = new CSVPrinter(new StringBuilder(), CSVFormat.DEFAULT);
 		System.out.println("15-2");
         final Map<String, String> map = recordWithHeader.toMap();
 		System.out.println("15-3");
