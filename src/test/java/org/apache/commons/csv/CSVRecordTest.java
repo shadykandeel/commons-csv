@@ -16,7 +16,6 @@
  */
 package org.apache.commons.csv;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -44,6 +43,7 @@ public class CSVRecordTest {
 
     @Before
     public void setUp() throws Exception {
+		System.out.println("1");
         values = new String[] { "A", "B", "C" };
         record = new CSVRecord(values, null, null, 0, -1);
         header = new HashMap<String, Integer>();
@@ -51,7 +51,6 @@ public class CSVRecordTest {
         header.put("second", Integer.valueOf(1));
         header.put("third", Integer.valueOf(2));
         recordWithHeader = new CSVRecord(values, header, null, 0, -1);
-		//System.out.println("1");
     }
 
     @Test
@@ -169,7 +168,28 @@ public class CSVRecordTest {
 
     @Test
     public void testRemoveAndAddColumns() throws IOException {
-	
+	System.out.println("15");
+        // do:
+		System.out.println("15-1");
+        final CSVPrinterT printer = new CSVPrinter(new StringBuilder(), CSVFormat.DEFAULT);
+		System.out.println("15-2");
+        final Map<String, String> map = recordWithHeader.toMap();
+		System.out.println("15-3");
+        map.remove("OldColumn");
+		System.out.println("15-4");
+        map.put("ZColumn", "NewValue");
+		System.out.println("15-5");
+        // check:
+        final ArrayList<String> list = new ArrayList<String>(map.values());
+		System.out.println("15-6");
+        Collections.sort(list);
+		System.out.println("15-7");
+        printer.printRecord(list);
+		System.out.println("15-8");
+        Assert.assertEquals("A,B,C,NewValue" + CSVFormat.DEFAULT.getRecordSeparator(), printer.getOut().toString());
+		System.out.println("15-9");
+        printer.close();
+		System.out.println("15-10");
 		
     }
 
