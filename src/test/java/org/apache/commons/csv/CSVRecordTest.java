@@ -173,8 +173,6 @@ public class CSVRecordTest {
         // do:
 		System.out.println("15-1");
          CSVPrinter printer = null;
-	    System.out.println("15-1-1-1");
-	     printer = new CSVPrinter();
 	    System.out.println("15-1-1");
 		 printer = new CSVPrinter(null, CSVFormat.DEFAULT);
 		System.out.println("15-2");
