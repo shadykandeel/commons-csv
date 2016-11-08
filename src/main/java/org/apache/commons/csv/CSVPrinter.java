@@ -58,8 +58,11 @@ public final class CSVPrinter implements Flushable, Closeable {
      * @throws IllegalArgumentException
      *             thrown if the parameters of the format are inconsistent or if either out or format are null.
      */
-    public CSVPrinter(final Appendable out, final CSVFormat format) throws IOException {
+    public CSVPrinter(){
         System.out.println("constructor");
+    }
+    public CSVPrinter(final Appendable out, final CSVFormat format) throws IOException {
+        
         Assertions.notNull(out, "out");
         Assertions.notNull(format, "format");
 
