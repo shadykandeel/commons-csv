@@ -36,8 +36,8 @@ import java.sql.SQLException;
 public final class CSVPrinter implements Flushable, Closeable {
 
     /** The place that the values get written. */
-    private final Appendable out;
-    private final CSVFormat format;
+    private  Appendable out;
+    private  CSVFormat format;
 
     /** True if we just began a new record. */
     private boolean newRecord = true;
