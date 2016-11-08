@@ -58,11 +58,8 @@ public final class CSVPrinter implements Flushable, Closeable {
      * @throws IllegalArgumentException
      *             thrown if the parameters of the format are inconsistent or if either out or format are null.
      */
-    public CSVPrinter(){
+    public CSVPrinter( Appendable out,  CSVFormat format) throws IOException {
         System.out.println("constructor");
-    }
-    public CSVPrinter(final Appendable out, final CSVFormat format) throws IOException {
-        
         Assertions.notNull(out, "out");
         Assertions.notNull(format, "format");
 
@@ -71,7 +68,7 @@ public final class CSVPrinter implements Flushable, Closeable {
         // TODO: Is it a good idea to do this here instead of on the first call to a print method?
         // It seems a pain to have to track whether the header has already been printed or not.
         if (format.getHeaderComments() != null) {
-            for (final String line : format.getHeaderComments()) {
+            for ( String line : format.getHeaderComments()) {
                 if (line != null) {
                     this.printComment(line);
                 }
