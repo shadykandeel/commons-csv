@@ -426,7 +426,7 @@ public final class CSVFormat implements Serializable {
         this.headerComments = toStringArray(headerComments);
         this.header = header == null ? null : header.clone();
         this.skipHeaderRecord = skipHeaderRecord;
-        validate();
+        //validate();
     }
 
     private String[] toStringArray(final Object[] values) {
