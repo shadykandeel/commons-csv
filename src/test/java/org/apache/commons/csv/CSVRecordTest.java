@@ -170,7 +170,30 @@ public class CSVRecordTest {
     @Test
     public void testRemoveAndAddColumns() throws IOException {
 	System.out.println("15");
-       
+        // do:
+		System.out.println("15-1");
+         CSVPrinter printer = null;
+		 StringBuilder st = new StrinBuilder();
+	    System.out.println("15-1-1");
+		 printer = new CSVPrinter(st, CSVFormat.DEFAULT);
+		System.out.println("15-2");
+        final Map<String, String> map = recordWithHeader.toMap();
+		System.out.println("15-3");
+        map.remove("OldColumn");
+		System.out.println("15-4");
+        map.put("ZColumn", "NewValue");
+		System.out.println("15-5");
+        // check:
+        final ArrayList<String> list = new ArrayList<String>(map.values());
+		System.out.println("15-6");
+        Collections.sort(list);
+		System.out.println("15-7");
+        printer.printRecord(list);
+		System.out.println("15-8");
+        Assert.assertEquals("A,B,C,NewValue" + CSVFormat.DEFAULT.getRecordSeparator(), printer.getOut().toString());
+		System.out.println("15-9");
+        printer.close();
+		System.out.println("15-10");
 		
     }
 
@@ -185,14 +208,20 @@ public class CSVRecordTest {
     @Test
     public void testToMapWithShortRecord() throws Exception {
 	System.out.println("17");
-       
+       final CSVParser parser =  CSVParser.parse("a,b", CSVFormat.DEFAULT.withHeader("A", "B", "C"));
+       final CSVRecord shortRec = parser.iterator().next();
+       shortRec.toMap();
 	   
     }
 
     @Test
     public void testToMapWithNoHeader() throws Exception {
 	System.out.println("18");
-      
+       final CSVParser parser =  CSVParser.parse("a,b", CSVFormat.newFormat(','));
+       final CSVRecord shortRec = parser.iterator().next();
+       final Map<String, String> map = shortRec.toMap();
+       assertNotNull("Map is not null.", map);
+       assertTrue("Map is empty.", map.isEmpty());
 	   
     }
 
