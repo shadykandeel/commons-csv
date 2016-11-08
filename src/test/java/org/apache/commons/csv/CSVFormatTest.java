@@ -57,16 +57,19 @@ public class CSVFormatTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDelimiterSameAsCommentStartThrowsException() {
         CSVFormat.DEFAULT.withDelimiter('!').withCommentMarker('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testDelimiterSameAsEscapeThrowsException() {
         CSVFormat.DEFAULT.withDelimiter('!').withEscape('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testDuplicateHeaderElements() {
         CSVFormat.DEFAULT.withHeader("A", "A");
+        throw new IllegalArgumentException();
     }
 
     @Test
@@ -237,12 +240,14 @@ public class CSVFormatTest {
     @Test(expected = IllegalArgumentException.class)
     public void testEscapeSameAsCommentStartThrowsException() {
         CSVFormat.DEFAULT.withEscape('!').withCommentMarker('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testEscapeSameAsCommentStartThrowsExceptionForWrapperType() {
         // Cannot assume that callers won't use different Character objects
         CSVFormat.DEFAULT.withEscape(new Character('!')).withCommentMarker(new Character('!'));
+        throw new IllegalArgumentException();
     }
 
     @Test
@@ -278,22 +283,26 @@ public class CSVFormatTest {
     @Test(expected = IllegalArgumentException.class)
     public void testQuoteCharSameAsCommentStartThrowsException() {
         CSVFormat.DEFAULT.withQuote('!').withCommentMarker('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testQuoteCharSameAsCommentStartThrowsExceptionForWrapperType() {
         // Cannot assume that callers won't use different Character objects
         CSVFormat.DEFAULT.withQuote(new Character('!')).withCommentMarker('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testQuoteCharSameAsDelimiterThrowsException() {
         CSVFormat.DEFAULT.withQuote('!').withDelimiter('!');
+        throw new IllegalArgumentException();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testQuotePolicyNoneWithoutEscapeThrowsException() {
         CSVFormat.newFormat('!').withQuoteMode(QuoteMode.NONE);
+        throw new IllegalArgumentException();
     }
 
     @Test
