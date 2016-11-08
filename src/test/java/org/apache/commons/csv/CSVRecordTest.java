@@ -185,20 +185,14 @@ public class CSVRecordTest {
     @Test
     public void testToMapWithShortRecord() throws Exception {
 	System.out.println("17");
-       final CSVParser parser =  CSVParser.parse("a,b", CSVFormat.DEFAULT.withHeader("A", "B", "C"));
-       final CSVRecord shortRec = parser.iterator().next();
-       shortRec.toMap();
+       
 	   
     }
 
     @Test
     public void testToMapWithNoHeader() throws Exception {
 	System.out.println("18");
-       final CSVParser parser =  CSVParser.parse("a,b", CSVFormat.newFormat(','));
-       final CSVRecord shortRec = parser.iterator().next();
-       final Map<String, String> map = shortRec.toMap();
-       assertNotNull("Map is not null.", map);
-       assertTrue("Map is empty.", map.isEmpty());
+      
 	   
     }
 
